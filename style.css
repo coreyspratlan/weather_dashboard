@@ -18,6 +18,9 @@
 
 .list {
     padding: 5px;
+    background-color: lightgrey;
+    color: black;
+    display: none;
 }
 
 #city-view {

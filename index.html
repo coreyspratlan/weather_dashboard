@@ -83,60 +83,62 @@
                                 <div class="col-md-2.4">
                                     <div class="card text-white bg-primary forecast">
                                         <div id="fiveDay" class="card-body">
-                                            <h5 class="card-title">Date</h5>
-                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon"></p>
+                                            <h5 id="date" class="card-title"> </h5>
+                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon">
+                                            </p>
                                             <p id="temperature" class="card-text">Temp</p>
                                             <p id="humid" class="card-text">Humidity</p>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
+
+                                <!-- <div class="col-md-2.4">
+                                    <div class="card text-white bg-primary forecast">
+                                        <div id="fiveDay" class="card-body">
+                                            <h5 id="date" class="card-title">Date</h5>
+                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon">
+                                            </p>
+                                            <p id="temperature" class="card-text">Temp</p>
+                                            <p id="humid" class="card-text">Humidity</p>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="col-md-2.4">
                                     <div class="card text-white bg-primary forecast">
                                         <div id="fiveDay" class="card-body">
-                                            <h5 class="card-title">Date</h5>
-                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon"></p>
+                                            <h5 id="date" class="card-title">Date</h5>
+                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon">
+                                            </p>
                                             <p id="temperature" class="card-text">Temp</p>
                                             <p id="humid" class="card-text">Humidity</p>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="col-md-2.4">
                                     <div class="card text-white bg-primary forecast">
                                         <div id="fiveDay" class="card-body">
-                                            <h5 class="card-title">Date</h5>
-                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon"></p>
+                                            <h5 id="date" class="card-title">Date</h5>
+                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon">
+                                            </p>
                                             <p id="temperature" class="card-text">Temp</p>
                                             <p id="humid" class="card-text">Humidity</p>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="col-md-2.4">
                                     <div class="card text-white bg-primary forecast">
                                         <div id="fiveDay" class="card-body">
-                                            <h5 class="card-title">Date</h5>
-                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon"></p>
+                                            <h5 id="date" class="card-title">Date</h5>
+                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon">
+                                            </p>
                                             <p id="temperature" class="card-text">Temp</p>
                                             <p id="humid" class="card-text">Humidity</p>
                                         </div>
                                     </div>
-                                </div> 
-
-                                <div class="col-md-2.4">
-                                    <div class="card text-white bg-primary forecast">
-                                        <div id="fiveDay" class="card-body">
-                                            <h5 class="card-title">Date</h5>
-                                            <p id="icon" class="card-text"><img id="wicon" src="" alt="Weather icon"></p>
-                                            <p id="temperature" class="card-text">Temp</p>
-                                            <p id="humid" class="card-text">Humidity</p>
-                                        </div>
-                                    </div>
-                                </div> 
-
-
-
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -155,265 +157,281 @@
     </div>
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>
-
-            $(document).ready(function () {
-
-                var cities = [""];
-
-                $("#button-addon2").on("click", function (event) {
-
-                    $("#cityName").val("");
-                    var city;
-                    var apiKey = "&appid=e5c684f0981af39e88d0e294778b62f6";
-
-
-                    event.preventDefault();
-                    city = $("#citySearch").val();
-                    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + apiKey;
-
-                    cities.push(city);
-
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                    }).then(function (response) {
-                        // This function looks up the city data object
-                        var lat = response.coord.lat;
-                        var lon = response.coord.lon;
-                        let latLon = "&lat=" + lat + "&lon=" + lon;
-
-                        event.preventDefault();
-                        console.log(response);
-                        // I want to add each city name to the bootstrap class = "list-group"
-                        $("#city-view").append('<li>').append(city).text;
-
-                        // I want to add the City Name, Temperature, Humidity, Wind Speed, and UV Index to the card body
-
-                        // The cityName keeps adding to the list and I want to make it refresh with a new city name
-
-                        $("#cityName").html(city).text();
-
-                        $("#temp").html('<p>').append("Temperature: " + Math.floor(response.main.temp) + " °F").text();
-
-                        // $("#temp").append("<p>").append("Temperature:" + temp)).text;
-                        $("#humidity").html('<p>').append("Humidity: " + Math.floor(response.main.humidity) + " %").text();
-
-
-                        // $("#humidity").append('<p>').append("Humidity: " + humidity).text;
-                        $("#windSpeed").html('<p>').append("Wind Speed: " + Math.floor(response.wind.speed) + " MPH").text();
-
-
-                        // $("#windSpeed").append('<p>').append("Wind Speed: " + windSpeed).text;
-
-                        $.ajax({
-
-                            url: "https://api.openweathermap.org/data/2.5/onecall?" + apiKey + latLon,
-                            method: "GET"
-
-                        }).then(function (response) {
-
-                            event.preventDefault();
-
-
-
-                            // var uvIndex = lat + lon;
-
-                            var uvi = console.log(response.current.uvi);
-                            // $("#uvIndex").html('<p>').append("UV Index: " + (uvi).text());
-
-                            // var iconcode = a.weather[0].icon;
-                            // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-                            // $('#wicon').attr('src', iconurl);
-
-
-                        })
-
-                        $.ajax({
-
-                            url: queryURL,  //iconcode +".png",
-                            method: "GET"
-
-                        }).then(function (response) {
-
-                            var iconcode = response.weather[0].icon;
-                            var iconnurl = queryURL + iconcode + ".png";
-                            var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-                            var fiveDay = 'http://api.openweathermap.org/data/2.5/forecast?appid='+ apiKey + '&q=' + city + '&count=10';
-
-                            event.preventDefault();
-                            
-                            $("#fiveDay").append("<div>").append(response);
-
-                            console.log(response.weather[0].icon);
-                            $('#wicon').append("<img>").attr('src', iconurl);
-                            $("#temperature").html('<p>').append("Temp: " + Math.floor(response.main.temp) + " °F").text();
-                            $("#humid").html('<p>').append("Humidity: " + Math.floor(response.main.humidity) + " %").text();
-
-
-
-                        })
-
-
-
-
-
-
-
-                        // $("#uvIndex").append("<p>").append("UV Index: " + uvi).text
-
-
-
-
-
-
-
-                        // $.then(function (response) {
-
-                        //     var cityName = $.this("<h2>")
-                        //     event.preventDefault();
-                        //     console.log(response);
-
-                        // $("#cityName").append('<h2>').append(city).text;
-
-                        // })
-
-                        // $.then(function (response) {
-
-                        //     var temperature;=
-                        //     event.preventDefault();
-                        //     console.log(response.main[3]);
-                        //     $("#temp").append('<p>').append(response.main[3]).text;
-
-                        // })
-
-                        // $.then(function (response) {
-
-                        //     var humidity = 
-                        //     event.preventDefault();
-                        //     console.log(response.main[3]);
-                        //     $("#humidity").append('<p>').append(response.main[3]).text;
-
-                        // })
-
-                        // $.then(function (response) {
-
-                        //     var windSpeed = 
-                        //     event.preventDefault();
-                        //     console.log(response.main[3]);
-                        //     $("#windSpeed").append('<p>').append(response.main[1]).text;
-
-                        // })
-
-                        // $.then(function (response) {
-
-                        //     var uvIndex = 
-                        //     event.preventDefault();
-                        //     console.log(response.main[3]);
-                        //     $("#uvIndex").append('<p>').append(response.main[3]).text;
-
-                        // })
-
-
-
-
-                    })
-
-                    //     var fiveDay;
-                    //     var apiKey = "&appid=e5c684f0981af39e88d0e294778b62f6";
-                    //     event.preventDefault();
-                    //     city = $("#citySearch").val();
-                    //     var queryURLfiveDay = "api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
-
-                    //     cities.push(city);
-
-                    //     $.ajax({
-                    //         url: queryURLfiveDay,
-                    //         method: "GET"
-                    //     }).then(function (response) {
-                    //         // This function looks up the city data object
-                    //         event.preventDefault();
-                    //         console.log(response);
-
-                    // var queryURLfiveDay = "api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
-
-                    // $.each(response, function(i, response){
-                    //     $response.append("<li>" + response.name + "</li>");
-                    // })
-
-                    // $("#city-view").append().text;
-
-
-
-                    //     var results = response.data;
-
-
-                    //     var cities = [""];
-
-                    //     for (let i = 0; i < results.length; i++) {
-                    // //  creating a list item tag to go in the cityArray
-                    //     var li = $("<li>").text(results[i].city);
-                    // //  storing the list variable in the variable cityName
-                    //     var cities = li;
-
-                    //     li.attr("src", results[i].main.name.url);
-
-                    //     cityArray.append(li);
-                    //     cityArray.append(cityName);
-                    //     console.log(cityArray);
-
-                    // $("#city-view").val(response).text;
-                    // $("#city-view").append('<li></li>');
-                    // $("#city-view").text(JSON.stringify(response));
-                    // }
-
-
-                    // 
-                })
-            })
-                            // storing the data from the AJAX request in the results variable
-                            //     var results = response.data;
-                            // // looping through each result item
-                            //     for (let i = 0; i < results.length; i++) {
-                            // //  creating a list item tag to go in the cityArray
-                            //     var li = $("<li>").text(results[i].city);
-                            // //  storing the list variable in the variable cityName
-                            //     var cities = li;
-                            // //  setting the source attribute of the cityName pulled of the result itemn
-                            //     li.attr("src", results[i].main.name.url);
-                            // //  Appending the list and cityName to the cityArray list
-                            //     cityArray.append(li);
-                            //     cityArray.append(cityName);
-                            //     console.log(cityArray);
-
-
-
-
-                            //     }
-                            // })
-
-
-
-                        // function citiesWeather() {
-
-                        // }   
-
-                        // var cityName = main.name[0];
-                        //     var cityTemp = main.temp[0];
-                        //     var cityHumidity = main.humidity[0];
-                        //     var cityWindSpeed = wind[1];
-                        //     var cityUvIndex = 
-
-                        //  // imperial units
-                        // "api.openweathermap.org/data/2.5/find?q=" + city + ",us&mode=xml" +  apiKey + "&units=imperial";
-
-                        // API call for 5 day forecast
-
-
-
-        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
 </body>
 
 </html>
+
+
+<!-- // $(document).ready(function () {
+
+// var cities = [""];
+
+// $("#button-addon2").on("click", function (event) {
+
+// $("#cityName").val("");
+// var city;
+// var apiKey = "&appid=e5c684f0981af39e88d0e294778b62f6";
+
+
+// event.preventDefault();
+// city = $("#citySearch").val();
+// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + apiKey;
+
+// cities.push(city);
+
+// $.ajax({
+// url: queryURL,
+// method: "GET"
+// }).then(function (response) {
+// // This function looks up the city data object
+// var lat = response.coord.lat;
+// var lon = response.coord.lon;
+// let latLon = "&lat=" + lat + "&lon=" + lon;
+
+// event.preventDefault();
+// console.log(response);
+// // I want to add each city name to the bootstrap class = "list-group"
+// $("#city-view").append('<li>').append(city).text;
+
+    // // I want to add the City Name, Temperature, Humidity, Wind Speed, and UV Index to the card body
+
+    // // The cityName keeps adding to the list and I want to make it refresh with a new city name
+
+    // $("#cityName").html(city).text();
+
+    // $("#temp").html('<p>').append("Temperature: " + Math.floor(response.main.temp) + " °F").text();
+
+        // // $("#temp").append("
+    <p>").append("Temperature:" + temp)).text;
+        // $("#humidity").html('
+    <p>').append("Humidity: " + Math.floor(response.main.humidity) + " %").text();
+
+
+        // // $("#humidity").append('
+    <p>').append("Humidity: " + humidity).text;
+        // $("#windSpeed").html('
+    <p>').append("Wind Speed: " + Math.floor(response.wind.speed) + " MPH").text();
+
+
+        // // $("#windSpeed").append('
+    <p>').append("Wind Speed: " + windSpeed).text;
+
+        // $.ajax({
+
+        // url: "https://api.openweathermap.org/data/2.5/onecall?" + apiKey + latLon,
+        // method: "GET"
+
+        // }).then(function (response) {
+
+        // event.preventDefault();
+
+
+
+        // // var uvIndex = lat + lon;
+
+        // var uvi = console.log(response.current.uvi);
+        // // $("#uvIndex").html('
+    <p>').append("UV Index: " + (uvi).text());
+
+        // // var iconcode = a.weather[0].icon;
+        // // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        // // $('#wicon').attr('src', iconurl);
+
+
+        // })
+
+        // $.ajax({
+
+        // url: queryURL, //iconcode +".png",
+        // method: "GET"
+
+        // }).then(function (response) {
+
+        // var iconcode = response.weather[0].icon;
+        // var iconnurl = queryURL + iconcode + ".png";
+        // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        // var fiveDay = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + apiKey + '&q=' + city + '&count=10';
+
+        // event.preventDefault();
+
+        // $("#fiveDay").append("
+    <div>").append(response);
+
+        // console.log(response.weather[0].icon);
+        // $('#wicon').append("<img>").attr('src', iconurl);
+        // $("#temperature").html('<p>').append("Temp: " + Math.floor(response.main.temp) + " °F").text();
+            // $("#humid").html('
+        <p>').append("Humidity: " + Math.floor(response.main.humidity) + " %").text();
+
+            // })
+
+
+            // // $.each(response, function (index, val) {
+            // // $("#date").append("<b>Day" + index + "</b>: ").text() // Day
+            // // $('#wicon').append("<img>").attr('src', iconurl);
+            // // $("#temperature").html('
+        <p>').append("Temp: " + Math.floor(response.main.temp) + " °F").text();
+            // // $("#humid").html('
+        <p>').append("Humidity: " + Math.floor(response.main.humidity) + " %").text();
+            // // });
+            // })
+
+            // })
+
+            // })
+
+            // $("#uvIndex").append("
+        <p>").append("UV Index: " + uvi).text
+
+
+
+
+
+
+
+            // $.then(function (response) {
+
+            // var cityName = $.this("
+        <h2>")
+            // event.preventDefault();
+            // console.log(response);
+
+            // $("#cityName").append('<h2>').append(city).text;
+
+                // })
+
+                // $.then(function (response) {
+
+                // var temperature;=
+                // event.preventDefault();
+                // console.log(response.main[3]);
+                // $("#temp").append('<p>').append(response.main[3]).text;
+
+                    // })
+
+                    // $.then(function (response) {
+
+                    // var humidity =
+                    // event.preventDefault();
+                    // console.log(response.main[3]);
+                    // $("#humidity").append('
+                <p>').append(response.main[3]).text;
+
+                    // })
+
+                    // $.then(function (response) {
+
+                    // var windSpeed =
+                    // event.preventDefault();
+                    // console.log(response.main[3]);
+                    // $("#windSpeed").append('
+                <p>').append(response.main[1]).text;
+
+                    // })
+
+                    // $.then(function (response) {
+
+                    // var uvIndex =
+                    // event.preventDefault();
+                    // console.log(response.main[3]);
+                    // $("#uvIndex").append('
+                <p>').append(response.main[3]).text;
+
+                    // })
+
+
+
+
+
+
+                    // var fiveDay;
+                    // var apiKey = "&appid=e5c684f0981af39e88d0e294778b62f6";
+                    // event.preventDefault();
+                    // city = $("#citySearch").val();
+                    // var queryURLfiveDay = "api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+
+                    // cities.push(city);
+
+                    // $.ajax({
+                    // url: queryURLfiveDay,
+                    // method: "GET"
+                    // }).then(function (response) {
+                    // // This function looks up the city data object
+                    // event.preventDefault();
+                    // console.log(response);
+
+                    // var queryURLfiveDay = "api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+
+                    // $.each(response, function(i, response){
+                    // $response.append("
+<li>" + response.name + "</li>");
+// })
+
+// $("#city-view").append().text;
+
+
+
+// var results = response.data;
+
+
+// var cities = [""];
+
+// for (let i = 0; i < results.length; i++) { // // creating a list item tag to go in the cityArray // var li=$("<li>
+    ").text(results[i].city);
+    // // storing the list variable in the variable cityName
+    // var cities = li;
+
+    // li.attr("src", results[i].main.name.url);
+
+    // cityArray.append(li);
+    // cityArray.append(cityName);
+    // console.log(cityArray);
+
+    // $("#city-view").val(response).text;
+    // $("#city-view").append('<li></li>');
+    // $("#city-view").text(JSON.stringify(response));
+    // }
+
+
+    //
+
+
+    // storing the data from the AJAX request in the results variable
+    // var results = response.data;
+    // // looping through each result item
+    // for (let i = 0; i < results.length; i++) { // // creating a list item tag to go in the cityArray // var
+        li=$("<li>").text(results[i].city);
+        // // storing the list variable in the variable cityName
+        // var cities = li;
+        // // setting the source attribute of the cityName pulled of the result itemn
+        // li.attr("src", results[i].main.name.url);
+        // // Appending the list and cityName to the cityArray list
+        // cityArray.append(li);
+        // cityArray.append(cityName);
+        // console.log(cityArray);
+
+
+
+
+        // }
+        // })
+
+
+
+        // function citiesWeather() {
+
+        // }
+
+        // var cityName = main.name[0];
+        // var cityTemp = main.temp[0];
+        // var cityHumidity = main.humidity[0];
+        // var cityWindSpeed = wind[1];
+        // var cityUvIndex =
+
+        // // imperial units
+        // "api.openweathermap.org/data/2.5/find?q=" + city + ",us&mode=xml" + apiKey + "&units=imperial";
+
+        // API call for 5 day forecast -->
