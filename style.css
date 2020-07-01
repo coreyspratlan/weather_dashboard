@@ -1,0 +1,50 @@
+#h1 {
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.container {
+
+}
+
+.button {
+    color: white;
+    background-color:#007bff;
+
+}
+
+.list {
+    padding: 5px;
+}
+
+#city-view {
+    list-style: none;
+}
+
+.cityCard {
+    border-width: 5px;
+}
+
+.forecastrow {
+    margin-top: 5px;
+    margin-left: 5px;
+    
+
+}
+.forecast {
+    margin: 10px;
+    margin-bottom: 20px;
+   
+}
+
+.footer {
+    color: white;
+    text-align: center;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
