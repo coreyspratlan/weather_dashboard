@@ -16,4 +16,4 @@ This app would be perfect for world travelers seeking to make travel plans based
 https://github.com/coreyspratlan/weather_dashboard
 
 
-/Users/coreyspratlan/Desktop/Screen Shot 2020-06-30 at 11.49.01 PM.png
+<img src="/Users/coreyspratlan/Desktop/Screen Shot 2020-06-30 at 11.49.01 PM.png">
