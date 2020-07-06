@@ -11,7 +11,7 @@ $(document).ready(function () {
 
         event.preventDefault();
         city = $("#citySearch").val();
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + apiKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + apiKey;
 
         cities.push(city);
 
