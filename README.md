@@ -13,9 +13,10 @@ Using the openweathermap api and api key, I was able to dynamically change html 
 This app would be perfect for world travelers seeking to make travel plans based on weather conditions.
 
 
-GitHub: https://github.com/coreyspratlan/weather_dashboard
+GitHub:  https://github.com/coreyspratlan/weather_dashboard
 
 GitHub Page: https://coreyspratlan.github.io/weather_dashboard/
 
 
 <img src="/Users/coreyspratlan/Desktop/Screen Shot 2020-06-30 at 11.49.01 PM.png">
+
